@@ -505,6 +505,18 @@ static const rpi_hw_t rpi_hw_info[] = {
         .videocore_base = VIDEOCORE_BASE_RPI2,
         .desc = "Compute Module 3+",
     },
+    
+    //
+    // Banana Pi BPI-M2 ZERO
+    //
+    {
+        .hwver  = 0x000000,
+        .type = RPI_HWVER_TYPE_PI2,
+        .periph_base = PERIPH_BASE_RPI2,
+        .videocore_base = VIDEOCORE_BASE_RPI2,
+        .desc = "Banana Pi M2 Zero",
+    },
+    
 
 
 };
