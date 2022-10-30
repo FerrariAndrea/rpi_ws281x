@@ -701,10 +701,7 @@ static int check_hwver_and_gpionum(ws2811_t *ws2811)
     rpi_hw = ws2811->rpi_hw;
     hwver = rpi_hw->hwver & 0x0000ffff;
     gpionum = ws2811->channel[0].gpionum;
-    if(hwver==0x0000ffff ){
-        //SKIP check for Banana Pi M2 Zero
-        return set_driver_mode(ws2811, gpionum);
-    }else if (hwver < 0x0004)  // Model B Rev 1
+    if (hwver < 0x0004)  // Model B Rev 1
     {
         for ( i = 0; i < (int)(sizeof(gpionums_B1) / sizeof(gpionums_B1[0])); i++)
         {
@@ -747,6 +744,9 @@ static int check_hwver_and_gpionum(ws2811_t *ws2811)
                 return set_driver_mode(ws2811, gpionum);
             }
         }
+    }else{//here need an else if with the check on "hwver"
+        //SKIP check for Banana Pi M2 Zero
+        return set_driver_mode(ws2811, gpionum);
     }
     fprintf(stderr, "Gpio %d is illegal for LED channel 0\n", gpionum);
     return -1;
